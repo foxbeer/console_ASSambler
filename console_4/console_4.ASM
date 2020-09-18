@@ -1,10 +1,10 @@
-                             format PE console     ;ожидаемый формат вывода
+ format PE console
 
-entry Start           ;определяем ключевое слово для точки входа
+entry Start
 
 include 'win32a.inc'
 
-section '.data' data readable writable  ;секция чтобы определить память, которой мы будем пользоваться
+section '.data' data readable writable
 
         firstPrompt db 'Enter the first number: ', 0
         secondPrompt db 'Enter the second number: ', 0
@@ -16,7 +16,7 @@ section '.data' data readable writable  ;секция чтобы определить память, которой
 
         NULL = 0
 
-section '.code' code readable executable     ;секция непосредственно кода
+section '.code' code readable executable
     Start:
         push firstPrompt
         call [printf]
@@ -45,7 +45,7 @@ section '.code' code readable executable     ;секция непосредственно кода
         push NULL
         call [ExitProcess]
 
-section '.idata' import data readable    ;секция импортов комманд из библиотеки kernel32.dll
+section '.idata' import data readable
 
         library kernel, 'kernel32.dll' ,\
                 msvcrt, 'msvcrt.dll'
