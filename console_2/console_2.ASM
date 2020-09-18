@@ -5,11 +5,10 @@ include 'win32a.inc'
 section '.data' data readable writeable
 
 prompt db 'What is your age? ', 0
-outstr db 'You age is %s', 0
-inputStr db '%s', 0
+outstr db 'You age is %d', 0
+inputStr db '%d', 0
 
-name dd ?
-
+age dd ?
 NULL = 0
 
 
@@ -18,11 +17,11 @@ start:
 push prompt
 call [printf]
 
-push name
+push age
 push inputStr
 call [scanf]
 
-push name
+push [age]
 push outstr
 call [printf]
 
